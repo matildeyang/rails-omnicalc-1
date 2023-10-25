@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get("/payment/results", { :controller => "calculate", :action => "payment_results" })
 
   get("/random/new", { :controller => "calculate", :action => "random_new" })
-  get("/random/results", { :controller => "calculate", :action => "random_new" })
+  get("/random/results", { :controller => "calculate", :action => "random_results" })
 
   get("/", { :controller => "calculate", :action => "home" })
 end
