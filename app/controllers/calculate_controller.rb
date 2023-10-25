@@ -18,4 +18,23 @@ class CalculateController < ApplicationController
     @result = @num.to_f ** 0.5 
     render({:template => "my_templates/square_root_results"})
   end 
+
+  def payment_new
+    render({:template => "my_templates/payment_new"})
+  end 
+
+  def payment_results
+    @apr = params.fetch("apr").to_f.round(4)
+    @principal = params.fetch("principal")
+    @year = params.fetch("year")
+
+    @n = @year.to_f * 12
+    @rate = @apr.to_f/100/12
+
+    @numerator = @rate * @principal.to_f
+    @denominator = 1 - (1 + @rate)**-@n
+
+    @payment = (@numerator/@denominator).round(2)
+    render({:template => "my_templates/payment_results"})
+  end 
 end 
