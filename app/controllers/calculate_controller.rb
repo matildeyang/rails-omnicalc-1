@@ -37,4 +37,19 @@ class CalculateController < ApplicationController
     @payment = (@numerator/@denominator).round(2)
     render({:template => "my_templates/payment_results"})
   end 
+
+  def random_new
+    render({:template => "my_templates/random_new"})
+  end
+
+  def random_results
+    @min = params.fetch("minimum").to_f
+    @max = params.fetch("maximum").to_f
+    @result = rand(@min..@max)
+    render({:template => "my_templates/random_results"})
+  end 
+
+  def home 
+    render({:template => "my_templates/new_square"})
+  end 
 end 
